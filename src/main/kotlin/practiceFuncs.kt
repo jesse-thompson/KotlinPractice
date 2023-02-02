@@ -18,11 +18,36 @@ fun main()
     println(max2(1,2,3,4,5,6,7))
     println(max2(*intArrayOf(1,2,3,4,5,6,7,8))) // needs * spread operator else error
 
-     */
-
     // Destructuring
     val (fst, snd, trd) = getFullNames()
     println("$fst $snd $trd")
+
+     */
+
+    //Range Classes
+    val oneToFive: IntRange = 1..5
+    val aToE: CharRange = 'a'..'e'
+
+    //Forward iteration
+    for (i in 1..5)
+        println("1 $i")
+    for (ch in 'a'..'e')
+        println(ch)
+
+    //Reverse iteration
+    for (i in 5.downTo(1))
+        println("a $i")
+    for (i in 5 downTo 1)
+        println("b $i")
+
+    // Skipping values in Range
+    for (i in 1 until 5)
+        println("c $i")
+    for (i in 1 until 10 step 3)
+        println("d $i")
+    for (i in 10 downTo 0 step 3)
+        println("e $i")
+
 }
 
 // return keyword is not allowed for single line function
@@ -64,3 +89,5 @@ fun max2(vararg numbers: Int): Int
 
 //Destructuring
 fun getFullNames() = Triple("John", "Quincy", "Adams")
+
+
