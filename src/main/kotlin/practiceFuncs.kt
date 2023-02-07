@@ -1,3 +1,5 @@
+import java.time.DayOfWeek
+
 fun main()
 {
     /*
@@ -21,8 +23,6 @@ fun main()
     // Destructuring
     val (fst, snd, trd) = getFullNames()
     println("$fst $snd $trd")
-
-     */
 
     //Range Classes
     val oneToFive: IntRange = 1..5
@@ -48,6 +48,40 @@ fun main()
     for (i in 10 downTo 0 step 3)
         println("e $i")
 
+    for (i in (1..9).filter { it % 3 == 0 || it % 5 == 0 })
+        print("$i ")
+    println()
+
+    val array = arrayOf(1,2,3)
+    val list = listOf(1,2,3)
+
+    for (e in list) print("$e")
+    val names = listOf("Tom", "Jerry", "Spike")
+    for (index in names.indices)
+        println("Position of ${names[index]} is $index")  // without {}, will only print whole array plus index
+
+    // get both index and value
+    for ((index, name) in names.withIndex())
+        println("Position of $name is $index")
+
+    for (i in (1..9))
+    {
+        println(isAlive3(alive = true, i))
+        println(isAlive3(alive = false, i))
+    }
+
+    val days = listOf("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat")
+    for (day in days)
+        println(whatToDo(day))
+
+    val days = listOf("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat")
+    for (day in days)
+        printWhatToDo(day)
+
+     */
+
+    println(systemInfo1())
+    fizzBuzz()
 }
 
 // return keyword is not allowed for single line function
@@ -90,4 +124,64 @@ fun max2(vararg numbers: Int): Int
 //Destructuring
 fun getFullNames() = Triple("John", "Quincy", "Adams")
 
+fun isAlive3(alive: Boolean, numberOfLiveNeighbor: Int) =
+    (numberOfLiveNeighbor == 3) || (alive && (numberOfLiveNeighbor == 2))
 
+fun whatToDo(dayOfWeek: Any) = when (dayOfWeek)
+{
+    "Sat", "Sun", -> "Relax"
+    in listOf("Mon", "Tues", "Wed", "Thur") -> "work hard"
+    in 2..4 -> "work hard"
+    "Fri" -> "Party"
+    is String -> "What?"
+    else -> "No Clue"
+}
+
+fun printWhatToDo(dayOfWeek: Any)
+{
+    when (dayOfWeek)
+    {
+        "Sat", "Sun", -> println("Relax")
+        in listOf("Mon", "Tues", "Wed", "Thur") -> println("work hard")
+        in 2..4 -> println("work hard")
+        "Fri" -> println("Party")
+        is String -> println("What?")
+        else -> println("No Clue")
+    }
+}
+
+fun systemInfo1(): String
+{
+    val numberOfCores = Runtime.getRuntime().availableProcessors()
+
+    return when (numberOfCores)
+    {
+        1 -> "1 core, packing this one off to the museum"
+        in 2..6 -> "You have $numberOfCores cores"
+        else -> "$numberOfCores cores! I want your machine"
+    }
+}
+
+fun systemInfo2(): String
+{
+
+    return when (val numberOfCores = Runtime.getRuntime().availableProcessors())
+    {
+        1 -> "1 core, packing this one off to the museum"
+        in 2..6 -> "You have $numberOfCores cores"
+        else -> "$numberOfCores cores! I want your machine"
+    }
+}
+
+fun fizzBuzz()
+{
+    for (i in 1..100)
+        when
+        {
+            (i % 15 == 0) -> println("FizzBuzz")
+
+            (i % 3 == 0) -> println("Fizz")
+            (i % 5 == 0) -> println("Buzz")
+            else -> println(i)
+        }
+}
