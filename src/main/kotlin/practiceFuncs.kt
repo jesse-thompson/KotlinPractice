@@ -1,4 +1,6 @@
 import java.time.DayOfWeek
+import kotlin.math.roundToInt
+import kotlin.random.Random
 
 fun main()
 {
@@ -78,10 +80,57 @@ fun main()
     for (day in days)
         printWhatToDo(day)
 
-     */
-
     println(systemInfo1())
+
     fizzBuzz()
+
+    guessNumber()
+
+    println(Pair("Tom", "Jerry"))
+
+    println(mapOf("Tom" to "Cat", "Jerry" to "Mouse"))
+
+    val airportCode = listOf("LAX", "SFO", "PDX", "SEA")
+
+    // iterate airportCode using map()
+    // List.map() transform each airport code to the pair of code, temperature
+    // var temperatures will hold Pair <String,String>
+    val temperatures =
+        airportCode.map { code -> code to getTemperatureAtAirport(code) }
+    println(temperatures)
+
+    for (temp in temperatures)
+    {
+        println("Airport: ${temp.first}; Temperature: ${temp.second}")
+    }
+
+    // listOf() is immutable
+    // mutableListOf() is mutable
+    val fruits: List<String> = listOf("Apple", "Banana", "Grape")
+    println(fruits)
+
+    // use .get() or []
+    println("f1: ${fruits.get(1)}, ${fruits[2]}")
+    println("Apple" in fruits)
+    // fruits.add("Orange") gives ERROR
+
+    val fruits2 = fruits + "Orange"
+    println("f2: $fruits2")
+    val fruits3 = fruits2 - "Banana"
+    println("f3: $fruits3")
+
+    val fruitsMutable: MutableList<String> =
+        mutableListOf("Apple", "Banana", "Grape")
+    fruitsMutable.add("Tomato")
+    println("fm: $fruitsMutable")
+
+     */
+    val sites: Map<String,String> =
+        mapOf("google" to "https://google.com", "agiledevelper" to "https://agiledeveloper.com")
+    println(sites.size)
+
+    // iterate map (can only check keys, not values)
+    println("agiledevelper" in sites)
 }
 
 // return keyword is not allowed for single line function
@@ -173,15 +222,35 @@ fun systemInfo2(): String
     }
 }
 
+// basically a switch statement, using when
 fun fizzBuzz()
 {
     for (i in 1..100)
         when
         {
             (i % 15 == 0) -> println("FizzBuzz")
-
             (i % 3 == 0) -> println("Fizz")
             (i % 5 == 0) -> println("Buzz")
             else -> println(i)
         }
 }
+
+fun guessNumber()
+{
+    val n: Int = 1 + Random.nextInt(10)
+    println("Guess a number from 1 to 10\n")
+    while (true)
+    {
+        print("Your guess: ")
+        when (readlnOrNull()?.toInt())
+        {
+            in n+1..10 -> println("Too High")
+            in n..n-1 -> println("Too Low")
+            n -> {println("Correct!"); break}
+            else -> println("Try Again")
+        }
+    }
+}
+
+fun getTemperatureAtAirport(code: String): String =
+    "${(Math.random() * 30).roundToInt() + code.count()} C"
