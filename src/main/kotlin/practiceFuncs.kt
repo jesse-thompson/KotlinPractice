@@ -252,5 +252,5 @@ fun guessNumber()
     }
 }
 
-fun getTemperatureAtAirport(code: String): String =
-    "${(Math.random() * 30).roundToInt() + code.count()} C"
+//fun getTemperatureAtAirport(code: String): String =
+//    "${(Math.random() * 30).roundToInt() + code.count()} C"
