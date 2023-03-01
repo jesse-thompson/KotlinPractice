@@ -35,7 +35,7 @@ fun getUserChoice(optionsParam: Array<String>):String {
     return userChoice
 }
 fun printResult (userChoice:String, gameChoice:String){
-    // TO DO: convert the following code using "when"
+    // TODO: convert the following code using "when"
     val result: String
     if (userChoice == gameChoice)
         result = "Tie!"
