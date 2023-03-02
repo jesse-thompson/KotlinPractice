@@ -152,7 +152,9 @@ fun nickName2(name:String?): String? = name?.reversed()
 fun nickName3(name:String?): String? = name?.reversed()?.uppercase()
 
 // ?: Elvis Operator
+// Null check is performed at each ? and will not continue pass if it is null
 // takes String? to allow null arguments, but the return type is String (not String?)
+// Returns Joker as the default if the entered value is null
 fun nickName4(name:String?): String = name?.reversed()?.uppercase()?:"Joker"
 /*
 fun nickName4(name:String?): String{
