@@ -6,19 +6,19 @@ fun main() {
     val ints = listOf(1,2,3,4)
     println (ints.maxOrNull())
 
-   val groceries = listOf(
-       Grocery ("Tomatoes", "Vegetable", "lb", 3.0,4),
-       Grocery ("Mushrooms", "Vegetable", "lb", 4.0,1),
-       Grocery ("Bagels", "Bakery", "Pack", 1.5,2),
-       Grocery ("Olive oil", "Pantry", "Bottle", 6.0,2),
-       Grocery ("Ice Cream", "Frozen", "Pack", 3.0,3))
+    val groceries = listOf(
+        Grocery ("Tomatoes", "Vegetable", "lb", 3.0,4),
+        Grocery ("Mushrooms", "Vegetable", "lb", 4.0,1),
+        Grocery ("Bagels", "Bakery", "Pack", 1.5,2),
+        Grocery ("Olive oil", "Pantry", "Bottle", 6.0,2),
+        Grocery ("Ice Cream", "Frozen", "Pack", 3.0,3))
 
     // find the item in groceries with the highest unitPrice
     // { i: item_type -> criteria }
     //val highestUnitPrice = groceries.maxByOrNull { i: Grocery -> i.unitPrice }
 
     // The Lambda must have one parameter, so we can just use "it"
-     val highestUnitPrice = groceries.maxByOrNull { it.unitPrice }
+    val highestUnitPrice = groceries.maxByOrNull { it.unitPrice }
 
     // The minBy or maxBy functions work with All types
     // take one parameter - a lambda that tells the function which property it should use

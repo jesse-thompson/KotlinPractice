@@ -14,14 +14,14 @@ fun convertFive(converter: (Int) -> Double): Double {
     return result
 }
 fun main(){
-    // convert (20.0, {c: Double -> c * 1.8 + 32})
+    convert (20.0, {c: Double -> c * 1.8 + 32})
 
     // We can omit its type if compiler can infer type
-    // convert (20.0, {c -> c * 1.8 + 32})
+    convert (20.0, {c -> c * 1.8 + 32})
 
     // IF the final parameter of a function is a lambda,
     // you can move the lambda argument outside the ()'s
-    // convert (20.0) {c -> c * 1.8 + 32}
+    convert (20.0) {c -> c * 1.8 + 32}
 
     // we can use "it" because
     // each lambda uses a single parameter whose type the compiler can infer

@@ -18,7 +18,7 @@ fun getConversionLambda(str: String): (Double) -> Double {
 */
 
 
-typealias DoubleConversion = (Double) -> Double
+typealias DoubleConversion = (Double) -> Double // for readability to simplify stuff below
 
 fun convert3 (x: Double, converter: DoubleConversion): Double{
     val result = converter(x)

@@ -7,6 +7,7 @@ open class Animal {
     // you cannot override hunger
     var hunger = 10
 
+
     // may override functions - makeNoise(), eat(), roam()
     open fun makeNoise() = println("The Animal is making a noise")
     open fun eat() = println("The Animal is eating")

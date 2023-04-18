@@ -124,14 +124,47 @@ fun main()
     fruitsMutable.add("Tomato")
     println("fm: $fruitsMutable")
 
-     */
     val sites: Map<String,String> =
         mapOf("google" to "https://google.com", "agiledevelper" to "https://agiledeveloper.com")
     println(sites.size)
 
     // iterate map (can only check keys, not values)
     println("agiledevelper" in sites)
+
+     */
+    // convert using filter and map funcs
+    var doubleOfEven = mutableListOf<Int>()
+    for (i in 1..100)
+        if (i % 2==0)
+            doubleOfEven.add(i*2)
+
+    println(doubleOfEven)
+
+    println((1..100).filter { it % 2==0 }.map { it * 2 })
+
+    // convert w/o using higher order funcs
+    // none returns false if lambda (predicate) returns true
+    // none returns true if no elements match the given predicate
+    fun isPrime(n: Int) = n > 1 && (2 until n).none { n % it == 0 }
+
+    println(isPrime(1)) // false
+    println(isPrime(2)) // true
+    println(isPrime(3)) // true
+    println(isPrime(4)) // false
+
+    fun issPrime(n: Int): Boolean
+    {
+        if (n < 2) return false
+        for (i in 2 until n)
+        {
+            if (n % i == 0)
+                return false
+        }
+        return true
+    }
 }
+
+
 
 // return keyword is not allowed for single line function
 fun greet() = "I am Groot"
@@ -142,7 +175,7 @@ fun greet(name: String) = "Hello $name" //can overload previous greet() because 
 fun sayHello() = println("Well, hello")
 
 // "Unit" type is similar to Java's "void" type
-val message: Unit = sayHello()
+//val message: Unit = sayHello()
 
 fun createPerson(name: String, age: Int=1, height: Int, weight: Int)
 {
